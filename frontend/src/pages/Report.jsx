@@ -5,7 +5,7 @@ import axios from 'axios'
 import LocChart from '../components/LocChart'
 import FileTree from '../components/FileTree'
 import TechStack from '../components/TechStack'
-import ArchGraph from '../components/ArchGraph'
+import ArchDiagram from '../components/ArchDiagram'
 import Summary from '../components/Summary'
 import ScoreCard from '../components/ScoreCard'
 import ShareButton from '../components/ShareButton'
@@ -204,55 +204,8 @@ export default function Report() {
         </section>
 
         <section className="report__section report__section--full">
-          <div className="report__section-head">
-
-            <div className="report__graph-toggle">
-              <button
-                className={
-                  graphMode === 'folder'
-                    ? 'active'
-                    : ''
-                }
-                onClick={() =>
-                  setGraphMode('folder')
-                }
-              >
-                Folder Mode
-              </button>
-
-              <button
-                className={
-                  graphMode === 'file'
-                    ? 'active'
-                    : ''
-                }
-                onClick={() =>
-                  setGraphMode('file')
-                }
-              >
-                File Mode
-              </button>
-            </div>
-            <h2>Architecture Graph</h2>
-          </div>
-
-          {/* <div className="report__graph-meta">
-            <span>
-              Nodes:{' '}
-              {currentGraph?.totalNodes ||
-                0}
-            </span>
-
-            <span>
-              Connections:{' '}
-              {currentGraph?.totalEdges ||
-                0}
-            </span>
-          </div> */}
-
-          <ArchGraph
-            archGraph={currentGraph}
-          />
+          <h2 className="report__section-title">File architecture</h2>
+          <ArchDiagram diagram={report.diagram} />
         </section>
 
         <section className="report__section report__section--full">

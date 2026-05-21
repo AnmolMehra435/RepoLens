@@ -3,7 +3,7 @@ import { getClonePath, cloneRepo } from './cloner.js'
 import { runCloc } from './locRunner.js'
 import { buildFileTree } from './fileTree.js'
 import { detectStack } from './stackDetector.js'
-import { buildArchGraph } from './archGraph.js'
+import { generateDiagram } from './diagramGenerator.js'
 import { generateSummary } from './summarizer.js'
 import { scoreRepo } from './scorer.js'
 import { cleanup } from './cleanup.js'
@@ -21,10 +21,10 @@ export async function processRepo(reportId, repoUrl) {
       detectStack(clonePath),
     ])
 
-    const archGraph = buildArchGraph(clonePath)
-    const repoName  = repoUrl.split('/').slice(-2).join('/')
-    const summary   = generateSummary(repoName, techStack, fileTree, loc)
-    const scoring   = scoreRepo(techStack, fileTree, loc)
+    const repoName          = repoUrl.split('/').slice(-2).join('/')
+    const summary           = await generateSummary(repoName, techStack, fileTree, loc)
+    const scoring           = scoreRepo(techStack, fileTree, loc)
+    const { mermaid, error} = await generateDiagram(fileTree, repoName, clonePath)
 
     await Report.findByIdAndUpdate(reportId, {
       status: 'complete',
@@ -32,7 +32,7 @@ export async function processRepo(reportId, repoUrl) {
       loc,
       fileTree,
       techStack,
-      archGraph,
+      diagram: mermaid,
       summary,
       scoring,
     })

@@ -1,0 +1,107 @@
+.archd {
+  width: 100%;
+}
+
+.archd__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.archd__zoom-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.reset {
+  width: auto !important;
+  min-width: 70px;
+  padding: 0 12px;
+  white-space: nowrap;
+}
+
+.archd__zoom-controls button {
+  width: 28px;
+  height: 28px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s;
+}
+
+.archd__zoom-controls button:hover {
+  border-color: var(--color-primary-hover);
+}
+
+.archd__zoom-controls span {
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  color: var(--color-text-muted);
+  min-width: 40px;
+  text-align: center;
+}
+
+.archd__copy {
+  padding: 6px 14px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  transition: all 0.2s;
+}
+
+.archd__copy:hover {
+  border-color: var(--color-primary-hover);
+  color: var(--color-text);
+}
+
+.archd__copy--done {
+  border-color: #7ecfa3;
+  color: #2d8a5e;
+  background: #d4f4e2;
+}
+
+.archd__scroll {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: 600px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: #ffffff;
+  padding: 24px;
+}
+
+.archd__inner {
+  display: inline-block;
+  min-width: 100%;
+  transition: transform 0.2s ease;
+}
+
+.archd-empty {
+  height: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.archd-empty p {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.archd-empty span {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+}

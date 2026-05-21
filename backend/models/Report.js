@@ -8,7 +8,7 @@ const ReportSchema = new mongoose.Schema({
   loc:       { type: Object },
   fileTree:  { type: Object },
   techStack: { type: [String] },
-  archGraph: { type: Object },
+  diagram:   { type: String },
   summary:   { type: String },
   scoring:   { type: Object },
   createdAt: { type: Date, default: Date.now }
