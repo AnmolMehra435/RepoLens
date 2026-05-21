@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import './Home.css'
@@ -8,6 +8,24 @@ export default function Home() {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
+
+  const [theme, setTheme] = useState(
+  localStorage.getItem('theme') || 'light'
+)
+
+useEffect(() => {
+
+  document.body.setAttribute(
+    'data-theme',
+    theme
+  )
+
+  localStorage.setItem(
+    'theme',
+    theme
+  )
+
+}, [theme])
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -42,6 +60,20 @@ export default function Home() {
         <span className="home__logo-name">
           Repo<span>Lens</span>
         </span>
+        <button
+          className="theme-toggle"
+          onClick={() =>
+            setTheme(t =>
+              t === 'light'
+                ? 'dark'
+                : 'light'
+            )
+          }
+        >
+          {theme === 'light'
+            ? '🌙 Dark'
+            : '☀️ Light'}
+        </button>
       </nav>
 
       <div className="home__hero">

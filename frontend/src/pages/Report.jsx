@@ -25,6 +25,10 @@ export default function Report() {
   const [graphMode, setGraphMode] =
     useState('folder')
 
+    const [theme, setTheme] = useState(
+      localStorage.getItem('theme') || 'light'
+    )
+
   useEffect(() => {
     let timeoutId
 
@@ -58,6 +62,20 @@ export default function Report() {
       }
     }
   }, [id])
+
+  useEffect(() => {
+
+  document.body.setAttribute(
+    'data-theme',
+    theme
+  )
+
+  localStorage.setItem(
+    'theme',
+    theme
+  )
+
+}, [theme])
 
   if (status === 'processing') {
     return (
@@ -114,6 +132,20 @@ export default function Report() {
         >
           ← RepoLens
         </button>
+        <button
+        className="theme-toggle"
+        onClick={() =>
+          setTheme(t =>
+            t === 'light'
+              ? 'dark'
+              : 'light'
+          )
+        }
+      >
+        {theme === 'light'
+          ? '🌙 Dark'
+          : '☀️ Light'}
+      </button>
 
         <div className="report__header-main">
           <h1 className="report__title">
@@ -193,7 +225,7 @@ export default function Report() {
           <LocChart loc={report.loc} />
         </section>
 
-        <section className="report__section">
+        <section className="report__section techstack">
           <h2 className="report__section-title">
             Tech stack
           </h2>
@@ -216,7 +248,7 @@ export default function Report() {
           <FileTree tree={report.fileTree} />
         </section>
 
-        <section className="report__section">
+        <section className="report__section techstack">
           <h2 className="report__section-title">
             Repo score
           </h2>
