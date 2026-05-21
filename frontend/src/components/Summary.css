@@ -1,0 +1,22 @@
+.summary {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-primary-hover);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: 20px;
+}
+
+.summary__icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.summary__text {
+  font-size: 0.95rem;
+  color: var(--color-text);
+  line-height: 1.75;
+}

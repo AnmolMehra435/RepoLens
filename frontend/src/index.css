@@ -1,0 +1,36 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-bg:           #F3E0EC;
+  --color-surface:      #EAD5E6;
+  --color-surface-2:    #ffffff;
+  --color-border:       #d9c2d6;
+  --color-primary:      #F2BEFC;
+  --color-primary-hover:#CA9CE1;
+  --color-text:         #2e2535;
+  --color-text-muted:   #685F74;
+  --color-success:      #7ecfa3;
+  --color-error:        #c0506a;
+  --radius-sm:          6px;
+  --radius-md:          10px;
+  --radius-lg:          16px;
+  --shadow-card:        0 2px 12px rgba(104, 95, 116, 0.1);
+  --font-sans:          'Inter', system-ui, sans-serif;
+  --font-mono:          'Fira Code', monospace;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+a { color: #8b5cf6; text-decoration: none; }
+
+button { cursor: pointer; font-family: inherit; }

@@ -1,0 +1,21 @@
+.share-btn {
+  padding: 9px 20px;
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  transition: all 0.2s;
+}
+
+.share-btn:hover {
+  border-color: var(--color-primary-hover);
+  color: var(--color-text);
+}
+
+.share-btn--copied {
+  border-color: #7ecfa3;
+  color: #2d8a5e;
+  background: #d4f4e2;
+}

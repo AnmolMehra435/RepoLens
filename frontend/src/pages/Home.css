@@ -1,0 +1,217 @@
+.home {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 72px 24px 60px;
+}
+
+.home__nav {
+  width: 100%;
+  max-width: 860px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 50px;
+  margin-top: -50px;
+}
+
+.home__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.home__logo-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--color-primary);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.home__logo-name {
+  font-size: 35px;
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+  margin-left: -40px;
+}
+
+.home__logo-name span {
+  color: var(--color-text-muted);
+}
+
+.home__hero {
+  margin-top: -50px;
+  max-width: 680px;
+  width: 100%;
+  text-align: center;
+}
+
+.home__badge {
+  display: inline-block;
+  background: var(--color-primary);
+  color: var(--color-text);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.home__title {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 18px;
+  color: var(--color-text);
+  letter-spacing: -0.03em;
+}
+
+.home__title-accent {
+  color: #8b5cf6;
+}
+
+.home__subtitle {
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+  margin-bottom: 40px;
+  line-height: 1.7;
+}
+
+.home__form {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.home__input-row {
+  display: flex;
+  gap: 10px;
+  background: var(--color-surface-2);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 6px 6px 6px 18px;
+  transition: border-color 0.2s;
+}
+
+.home__input-row:focus-within {
+  border-color: var(--color-primary-hover);
+}
+
+.home__input {
+  flex: 1;
+  background: none;
+  border: none;
+  color: var(--color-text);
+  font-size: 0.95rem;
+  font-family: var(--font-mono);
+  outline: none;
+  padding: 8px 0;
+}
+
+.home__input::placeholder { color: var(--color-text-muted); }
+
+.home__btn {
+  padding: 10px 24px;
+  background: var(--color-text);
+  color: var(--color-bg);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.home__btn:hover:not(:disabled) {
+  background: var(--color-text-muted);
+}
+
+.home__btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.home__error {
+  color: var(--color-error);
+  font-size: 0.85rem;
+  margin-top: 10px;
+  text-align: left;
+  padding-left: 4px;
+}
+
+.home__examples {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.home__examples-label {
+  color: var(--color-text-muted);
+  font-size: 0.82rem;
+}
+
+.home__example-chip {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  padding: 4px 14px;
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.home__example-chip:hover {
+  border-color: var(--color-primary-hover);
+  color: var(--color-text);
+}
+
+.home__features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 860px;
+  width: 100%;
+  margin-top: 80px;
+}
+
+.home__feature-card {
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  text-align: left;
+  box-shadow: var(--shadow-card);
+}
+
+.home__feature-icon {
+  font-size: 1.4rem;
+  display: block;
+  margin-bottom: 14px;
+}
+
+.home__feature-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--color-text);
+}
+
+.home__feature-desc {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+@media (max-width: 640px) {
+  .home__title { font-size: 2.2rem; }
+  .home__input-row { flex-direction: column; padding: 10px 14px; }
+  .home__features { grid-template-columns: 1fr; }
+}
