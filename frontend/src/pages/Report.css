@@ -153,3 +153,59 @@
 .report__stats {
   grid-template-columns: repeat(4, 1fr);
 }
+
+.report__section-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.report__section-head h2{
+  margin-left: 15%;
+}
+
+.report__graph-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.report__graph-toggle button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  padding: 10px 16px;
+
+  border-radius: 12px;
+
+  background: #f5eef8;
+
+  color: #6e4d7d;
+
+  font-size: 0.85rem;
+  font-weight: 600;
+
+  transition:
+    all 0.18s ease;
+}
+
+.report__graph-toggle button:hover {
+  background: #eddcf4;
+  transform: translateY(-1px);
+}
+
+.report__graph-toggle button.active {
+  background: linear-gradient(
+    135deg,
+    #ca9ce1,
+    #b57edc
+  );
+
+  color: white;
+
+  box-shadow:
+    0 6px 18px rgba(181,126,220,0.28);
+}
