@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import Report from './pages/Report'
+import History
+from './pages/History'
 
 export default function App() {
   return (
@@ -8,6 +10,10 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/report/:id" element={<Report />} />
+        <Route
+          path="/history"
+          element={<History />}
+        />
       </Routes>
     </BrowserRouter>
   )

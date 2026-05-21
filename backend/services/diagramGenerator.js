@@ -68,7 +68,6 @@ function cleanMermaid(mermaid) {
 
   return mermaid
 
-    // remove markdown fences
     .replace(/^```mermaid\s*/i, '')
     .replace(/^```\s*/i, '')
     .replace(/```$/i, '')
@@ -98,8 +97,6 @@ function sanitizeMermaid(mermaid) {
 
   const sanitized = lines.map(line => {
 
-    // sanitize node ids
-
     line = line.replace(
       /([A-Za-z0-9./\\_-]+)\[/g,
       (_, id) => {
@@ -110,8 +107,6 @@ function sanitizeMermaid(mermaid) {
         return `${cleanId}[`
       }
     )
-
-    // sanitize standalone node ids in arrows
 
     line = line.replace(
       /([A-Za-z0-9./\\_-]+)\s*-->/g,

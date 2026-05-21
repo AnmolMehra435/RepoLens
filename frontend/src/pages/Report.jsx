@@ -9,6 +9,8 @@ import ArchDiagram from '../components/ArchDiagram'
 import Summary from '../components/Summary'
 import ScoreCard from '../components/ScoreCard'
 import ShareButton from '../components/ShareButton'
+import Navbar
+from '../components/Navbar'
 
 import './Report.css'
 
@@ -125,6 +127,7 @@ export default function Report() {
 
   return (
     <div className="report">
+      <Navbar />
       <header className="report__header">
         <button
           className="report__back"
@@ -132,21 +135,6 @@ export default function Report() {
         >
           ← RepoLens
         </button>
-        <button
-        className="theme-toggle"
-        onClick={() =>
-          setTheme(t =>
-            t === 'light'
-              ? 'dark'
-              : 'light'
-          )
-        }
-      >
-        {theme === 'light'
-          ? '🌙 Dark'
-          : '☀️ Light'}
-      </button>
-
         <div className="report__header-main">
           <h1 className="report__title">
             {report.repoName}

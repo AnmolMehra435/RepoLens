@@ -1,28 +1,109 @@
 import express from 'express'
-import { v4 as uuidv4 } from 'uuid'
+
 import Report from '../models/Report.js'
-import { processRepo } from '../services/analyzer.js'
+
+import { processRepo }
+from '../services/analyzer.js'
+
+import {
+  protect,
+} from '../middleware/authMiddleware.js'
+
+import {
+  checkUsageLimit,
+} from '../middleware/usageLimit.js'
 
 const router = express.Router()
 
-router.post('/analyze', async (req, res) => {
-  const { repoUrl } = req.body
+router.post(
+  '/analyze',
 
-  if (!repoUrl || !repoUrl.match(/^https:\/\/github\.com\/[\w.-]+\/[\w.-]+$/)) {
-    return res.status(400).json({ error: 'Invalid GitHub URL' })
+  protect,
+
+  checkUsageLimit,
+
+  async (req, res) => {
+    const { repoUrl } = req.body
+
+    if (
+      !repoUrl ||
+      !repoUrl.match(
+        /^https:\/\/github\.com\/[\w.-]+\/[\w.-]+$/
+      )
+    ) {
+      return res.status(400).json({
+        error: 'Invalid GitHub URL',
+      })
+    }
+
+    const report =
+      await Report.create({
+        repoUrl,
+
+        status: 'processing',
+
+        user: req.user._id,
+      })
+
+    res.json({
+      reportId: report._id,
+
+      status: 'processing',
+    })
+
+    processRepo(
+      report._id,
+      repoUrl
+    ).catch(console.error)
   }
+)
 
-  const report = await Report.create({ repoUrl, status: 'processing' })
 
-  res.json({ reportId: report._id, status: 'processing' })
+router.get(
+  '/reports/history',
 
-  processRepo(report._id, repoUrl).catch(console.error)
-})
+  protect,
 
-router.get('/reports/:id', async (req, res) => {
-  const report = await Report.findById(req.params.id)
-  if (!report) return res.status(404).json({ error: 'Report not found' })
-  res.json(report)
-})
+  async (req, res) => {
+    try {
+      const reports =
+        await Report.find({
+          user: req.user._id,
+        })
+
+          .sort({
+            createdAt: -1,
+          })
+
+      res.json(reports)
+    } catch (err) {
+      res.status(500).json({
+        error:
+          'Failed to fetch history',
+      })
+    }
+  }
+)
+
+
+router.get(
+  '/reports/:id',
+
+  async (req, res) => {
+    const report =
+      await Report.findById(
+        req.params.id
+      )
+
+    if (!report) {
+      return res.status(404).json({
+        error:
+          'Report not found',
+      })
+    }
+
+    res.json(report)
+  }
+)
 
 export default router

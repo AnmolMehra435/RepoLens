@@ -1,13 +1,23 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
+import api from '../lib/axios'
 import './Home.css'
+import { useAuth } from '../context/AuthContext'
+import AuthModal
+from '../components/AuthModal'
+import ProfileDropdown
+from '../components/ProfileDropdown'
+import Navbar
+from '../components/Navbar'
 
 export default function Home() {
   const [url, setUrl] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
+  const { user } = useAuth()
+  const [showAuth, setShowAuth] =
+  useState(false)
 
   const [theme, setTheme] = useState(
   localStorage.getItem('theme') || 'light'
@@ -28,53 +38,51 @@ useEffect(() => {
 }, [theme])
 
   async function handleSubmit(e) {
-    e.preventDefault()
-    setError('')
+  e.preventDefault()
 
-    if (!url.match(/^https:\/\/github\.com\/[\w.-]+\/[\w.-]+$/)) {
-      setError('Please enter a valid GitHub repo URL')
-      return
-    }
+  setError('')
 
-    setLoading(true)
+  if (
+    !url.match(
+      /^https:\/\/github\.com\/[\w.-]+\/[\w.-]+$/
+    )
+  ) {
+    setError(
+      'Please enter a valid GitHub repo URL'
+    )
 
-    try {
-      const { data } = await axios.post(
-        'http://localhost:5000/api/analyze',
-        {
-          repoUrl: url,
-        }
-      )
-
-      navigate(`/report/${data.reportId}`)
-    } catch (err) {
-      setError('Server error. Make sure the backend is running.')
-      setLoading(false)
-      console.log(err.message)
-    }
+    return
   }
+
+  // AUTH CHECK
+  if (!user) {
+    setShowAuth(true)
+    return
+  }
+
+  setLoading(true)
+
+  try {
+    const { data } =
+      await api.post('/analyze', {
+        repoUrl: url,
+      })
+
+    navigate(
+      `/report/${data.reportId}`
+    )
+  } catch {
+    setError(
+      'Server error. Make sure backend is running.'
+    )
+
+    setLoading(false)
+  }
+}
 
   return (
     <div className="home">
-      <nav className="home__nav">
-        <span className="home__logo-name">
-          Repo<span>Lens</span>
-        </span>
-        <button
-          className="theme-toggle"
-          onClick={() =>
-            setTheme(t =>
-              t === 'light'
-                ? 'dark'
-                : 'light'
-            )
-          }
-        >
-          {theme === 'light'
-            ? '🌙 Dark'
-            : '☀️ Light'}
-        </button>
-      </nav>
+      <Navbar />
 
       <div className="home__hero">
         <span className="home__badge">Free & Open</span>
@@ -183,6 +191,12 @@ useEffect(() => {
           </div>
         ))}
       </div>
+      <AuthModal
+          open={showAuth}
+          onClose={() =>
+            setShowAuth(false)
+          }
+        />
     </div>
   )
 }

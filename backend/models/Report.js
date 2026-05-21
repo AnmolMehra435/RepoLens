@@ -11,7 +11,11 @@ const ReportSchema = new mongoose.Schema({
   diagram:   { type: String },
   summary:   { type: String },
   scoring:   { type: Object },
-  createdAt: { type: Date, default: Date.now }
+  createdAt: { type: Date, default: Date.now },
+  user: {
+  type: mongoose.Schema.Types.ObjectId,
+  ref: 'User',
+},
 })
 
 export default mongoose.model('Report', ReportSchema)
