@@ -351,12 +351,8 @@ Contributions, feature suggestions, and feedback are welcome.
 
 ---
 
-# License
+# Author
 
-MIT License
+-- Anmol Mehra
 
----
-
-# RepoLens
-
-> Understand any GitHub repository in seconds.
+```
