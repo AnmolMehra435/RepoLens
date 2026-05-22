@@ -15,7 +15,7 @@ passport.use(
         process.env.GITHUB_CLIENT_SECRET,
 
       callbackURL:
-        'http://repolens.online/api/auth/github/callback',
+        'https://repolens.online/api/auth/github/callback',
     },
 
     async (
