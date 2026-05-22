@@ -22,7 +22,7 @@ router.get(
   passport.authenticate('github', {
     session: false,
     failureRedirect:
-      'http://localhost:5173',
+      'http://13.216.72.49',
   }),
 
   async (req, res) => {
@@ -47,7 +47,7 @@ router.get(
     })
 
     res.redirect(
-      'http://localhost:5173'
+      'http://13.216.72.49'
     )
   }
 )
