@@ -39,7 +39,12 @@ const userSchema = new mongoose.Schema(
 
     lastAnalysisDate: {
         type: Date,
-    }
+    },
+    plan: {
+  type: String,
+  enum: ['free', 'pro', 'max'],
+  default: 'free',
+},
   },
 
   {

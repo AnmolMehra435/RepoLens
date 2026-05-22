@@ -127,7 +127,7 @@ export default function Report() {
 
   return (
     <div className="report">
-      <Navbar />
+      <div className="nav"><Navbar /></div>
       <header className="report__header">
         <button
           className="report__back"

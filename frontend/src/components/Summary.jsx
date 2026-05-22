@@ -5,7 +5,6 @@ export default function Summary({ summary, repoName }) {
 
   return (
     <div className="summary">
-      <div className="summary__icon">🔬</div>
       <p className="summary__text">{summary}</p>
     </div>
   )

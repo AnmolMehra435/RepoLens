@@ -52,7 +52,7 @@ export default function ProfileDropdown() {
       {open && (
         <div className="profile-dropdown">
           <Link to="/history">
-            History
+          <button>History</button>
             </Link>
 
           <button>

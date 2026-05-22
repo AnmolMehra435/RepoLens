@@ -5,8 +5,6 @@ import './Home.css'
 import { useAuth } from '../context/AuthContext'
 import AuthModal
 from '../components/AuthModal'
-import ProfileDropdown
-from '../components/ProfileDropdown'
 import Navbar
 from '../components/Navbar'
 
@@ -19,23 +17,21 @@ export default function Home() {
   const [showAuth, setShowAuth] =
   useState(false)
 
-  const [theme, setTheme] = useState(
-  localStorage.getItem('theme') || 'light'
-)
+//   const theme = localStorage.getItem('theme')
 
-useEffect(() => {
+// useEffect(() => {
 
-  document.body.setAttribute(
-    'data-theme',
-    theme
-  )
+//   document.body.setAttribute(
+//     'data-theme',
+//     theme
+//   )
 
-  localStorage.setItem(
-    'theme',
-    theme
-  )
+//   localStorage.setItem(
+//     'theme',
+//     theme
+//   )
 
-}, [theme])
+// }, [theme])
 
   async function handleSubmit(e) {
   e.preventDefault()
