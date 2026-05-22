@@ -15,8 +15,8 @@ export default function ThemeToggle() {
       onClick={toggleTheme}
     >
       {theme === 'light'
-        ? '🌙 Dark'
-        : '☀️ Light'}
+        ? '🌙'
+        : '☀️'}
     </button>
   )
 }

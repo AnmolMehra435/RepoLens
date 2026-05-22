@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import axios from 'axios'
+import api from '../lib/axios'
 
 import LocChart from '../components/LocChart'
 import FileTree from '../components/FileTree'
@@ -36,8 +36,8 @@ export default function Report() {
 
     const poll = async () => {
       try {
-        const { data } = await axios.get(
-          `http://localhost:5000/api/report/${id}`
+        const { data } = await api.get(
+          `/report/${id}`
         )
 
         setReport(data)
@@ -236,12 +236,12 @@ export default function Report() {
           <FileTree tree={report.fileTree} />
         </section>
 
-        <section className="report__section report__section--full">
+        <section className="report__section report__section--full profeat">
           <h2 className="report__section-title">Pro features</h2>
           <ProFeatures reportId={id} />
         </section>
 
-        <section className="report__section techstack">
+        <section className="report__section">
           <h2 className="report__section-title">
             Repo score
           </h2>

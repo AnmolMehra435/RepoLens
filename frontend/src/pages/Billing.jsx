@@ -17,6 +17,7 @@ const PLANS = [
       'File structure viewer',
       'LOC analytics',
       'Tech stack detection',
+      'AI architecture diagram',
       'Repo scoring',
       'Shareable reports',
     ],
@@ -33,8 +34,8 @@ const PLANS = [
     features:    [
       '25 analyses per day',
       'Everything in Free',
-      'AI architecture diagram',
       'Create README',
+      'Optimized Architecture Suggestion',
       'Priority processing',
     ],
     cta:         'Upgrade to Pro',
@@ -50,9 +51,10 @@ const PLANS = [
     analyses:    100,
     features:    [
       '100 analyses per day',
-      'Everything in Pro',
-      'Team sharing',
-      'API access',
+      'Everything in Free + Pro',
+      'Personalized AI Agent',
+      'Private repo analyses',
+      'Get API key',
       'Priority support',
     ],
     cta:         'Coming Soon',
@@ -144,6 +146,7 @@ export default function Billing() {
           <p className="billing-subtitle">
             Upgrade to analyze more repos and unlock powerful features
           </p>
+          <p className='billing-subtitle'>--<i>A small support to our business</i></p>
         </div>
 
         {error && <p className="billing-error">{error}</p>}

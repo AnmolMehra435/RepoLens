@@ -16,7 +16,7 @@
   backdrop-filter: blur(14px);
 
   background:
-    rgba(255,255,255,0.72);
+    #ebddf6;
 
   border-bottom:
     1px solid rgba(0,0,0,0.06);
@@ -33,7 +33,7 @@
 
 .navbar-center {
   flex: 1;
-  justify-content: center;
+  margin-left: 20px;
 }
 
 .navbar-right {

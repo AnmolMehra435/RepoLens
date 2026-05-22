@@ -23,12 +23,12 @@ export default function AuthModal({
         <p>
           Sign in to analyze repositories,
           save report history, and unlock
-          future premium features.
+           premium features.
         </p>
 
         <a
           className="auth-btn github"
-          href="http://localhost:5000/api/auth/github"
+          href={`${import.meta.env.VITE_API_URL}/auth/github`}
         >
           Continue with GitHub
         </a>

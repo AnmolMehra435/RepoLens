@@ -282,3 +282,7 @@
   .pro-features { grid-template-columns: 1fr; }
   .pro-modal { max-height: 95vh; }
 }
+
+body.dark .pro-modal-body h1{
+  color: black;
+}

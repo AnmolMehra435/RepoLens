@@ -16,7 +16,7 @@ export default function ProfileDropdown() {
     return (
       <a
         className="profile-login-btn"
-        href="http://localhost:5000/api/auth/github"
+        href={`${import.meta.env.VITE_API_URL}/auth/github`}
       >
         Sign in with GitHub
       </a>
@@ -40,10 +40,6 @@ export default function ProfileDropdown() {
             onClick={() => setOpen(false)}
           />
           <div className="profile-dropdown">
-            <div className="profile-dropdown-header">
-              <p className="profile-dropdown-name">{user.name}</p>
-              <p className="profile-dropdown-plan">{user.plan?.toUpperCase()} plan</p>
-            </div>
             <div className="profile-dropdown-divider" />
             <Link to="/profile" onClick={() => setOpen(false)}>
               <button>Profile</button>

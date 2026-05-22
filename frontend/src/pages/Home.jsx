@@ -155,18 +155,120 @@ export default function Home() {
 
       <div className="home__features">
         {[
-          { icon: '🌿', title: 'File structure',      desc: 'Interactive expandable tree of every file and folder' },
-          { icon: '📊', title: 'LOC analytics',       desc: 'Lines of code broken down by language with visual charts' },
-          { icon: '🔬', title: 'Tech stack',          desc: 'Auto-detected frameworks, libraries, and tools' },
-          { icon: '📝', title: 'Project description', desc: 'Smart repository summaries with detected architecture and stack' },
-          { icon: '🏆', title: 'Project score',       desc: 'Evaluate maintainability, structure, complexity, and quality' },
-          { icon: '🕸️', title: 'Architecture graph',  desc: 'Visualize folder relationships and dependency flow instantly' },
-          { icon: '🔗', title: 'Shareable reports',   desc: 'Generate public report links to showcase your repositories' },
+          {
+            icon: '🌿',
+            title: 'File structure',
+            desc: 'Interactive expandable tree of every file and folder',
+          },
+
+          {
+            icon: '📊',
+            title: 'LOC analytics',
+            desc: 'Lines of code broken down by language with visual charts',
+          },
+
+          {
+            icon: '🔬',
+            title: 'Tech stack',
+            desc: 'Auto-detected frameworks, libraries, and tools',
+          },
+
+          {
+            icon: '📝',
+            title: 'Project description',
+            desc: 'Smart repository summaries with detected architecture and stack',
+          },
+
+          {
+            icon: '🏆',
+            title: 'Project score',
+            desc: 'Evaluate maintainability, structure, complexity, and quality',
+          },
+
+          {
+            icon: '🕸️',
+            title: 'Architecture graph',
+            desc: 'Visualize folder relationships and dependency flow instantly',
+          },
+
+          {
+            icon: '🔗',
+            title: 'Shareable reports',
+            desc: 'Generate public report links to showcase your repositories',
+          },
+
+          // =========================
+          // PRO FEATURES
+          // =========================
+
+          {
+            icon: '📘',
+            title: 'README generation',
+            desc: 'Generate beautiful AI-powered README files for your repositories',
+            tier: 'PRO',
+          },
+
+          {
+            icon: '🧠',
+            title: 'Architecture optimization',
+            desc: 'Receive AI suggestions to improve scalability and project structure',
+            tier: 'PRO',
+          },
+
+          // =========================
+          // MAX FEATURES
+          // =========================
+
+          {
+            icon: '🤖',
+            title: 'Personalized AI agent',
+            desc: 'Chat with an AI assistant trained specifically on your repository',
+            tier: 'MAX',
+            soon: true,
+          },
+
+          {
+            icon: '🔒',
+            title: 'Private repo analysis',
+            desc: 'Analyze private GitHub repositories securely with OAuth access',
+            tier: 'MAX',
+            soon: true,
+          },
+
+          {
+            icon: '🧩',
+            title: 'RepoLens API',
+            desc: 'Get API access to integrate RepoLens analysis into your own apps',
+            tier: 'MAX',
+            soon: true,
+          },
         ].map(f => (
-          <div key={f.title} className="home__feature-card">
-            <span className="home__feature-icon">{f.icon}</span>
-            <h3 className="home__feature-title">{f.title}</h3>
-            <p className="home__feature-desc">{f.desc}</p>
+          <div
+            key={f.title}
+            className={`
+              home__feature-card
+              ${f.tier ? 'home__feature-card--premium' : ''}
+              ${f.soon ? 'home__feature-card--soon' : ''}
+            `}
+          >
+            {f.tier && (
+              <div className="home__feature-badge">
+                {f.tier}
+                {f.soon && ' • Coming Soon'}
+              </div>
+            )}
+
+            <span className="home__feature-icon">
+              {f.icon}
+            </span>
+
+            <h3 className="home__feature-title">
+              {f.title}
+            </h3>
+
+            <p className="home__feature-desc">
+              {f.desc}
+            </p>
           </div>
         ))}
       </div>

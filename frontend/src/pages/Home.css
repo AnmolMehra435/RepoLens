@@ -361,3 +361,48 @@ body.dark .home__badge {
 
 .home__usage-msg--warn   { color: #b45309; }
 .home__usage-msg--danger { color: var(--color-error); }
+
+body.dark .home__usage-label,
+body.dark .home__usage-count {
+  color: white;
+}
+
+.home__feature-card--premium {
+  position: relative;
+
+  border:
+    1px solid rgba(181,126,220,0.28);
+}
+
+.home__feature-card--soon {
+  opacity: 0.9;
+}
+
+.home__feature-badge {
+  position: absolute;
+
+  top: 14px;
+  right: 14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ca9ce1,
+      #b57edc
+    );
+
+  color: white;
+
+  font-size: 0.68rem;
+
+  font-weight: 700;
+
+  padding: 5px 10px;
+
+  border-radius: 999px;
+
+  letter-spacing: 0.04em;
+
+  box-shadow:
+    0 6px 14px rgba(181,126,220,0.22);
+}
