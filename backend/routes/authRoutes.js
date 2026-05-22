@@ -22,7 +22,7 @@ router.get(
   passport.authenticate('github', {
     session: false,
     failureRedirect:
-      'http://13.216.72.49',
+      'http://repolens.online',
   }),
 
   async (req, res) => {
@@ -47,7 +47,7 @@ router.get(
     })
 
     res.redirect(
-      'http://13.216.72.49'
+      'http://repolens.online'
     )
   }
 )
