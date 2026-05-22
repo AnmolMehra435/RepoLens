@@ -59,35 +59,9 @@ router.post(
 )
 
 
-router.get(
-  '/reports/history',
-
-  protect,
-
-  async (req, res) => {
-    try {
-      const reports =
-        await Report.find({
-          user: req.user._id,
-        })
-
-          .sort({
-            createdAt: -1,
-          })
-
-      res.json(reports)
-    } catch (err) {
-      res.status(500).json({
-        error:
-          'Failed to fetch history',
-      })
-    }
-  }
-)
-
 
 router.get(
-  '/reports/:id',
+  '/report/:id',
 
   async (req, res) => {
     const report =

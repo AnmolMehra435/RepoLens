@@ -1,67 +1,37 @@
 import express from 'express'
-
-import jwt from 'jsonwebtoken'
-
 import User from '../models/User.js'
+import { protect } from '../middleware/authMiddleware.js'
 
 const router = express.Router()
 
-router.get('/me', async (req, res) => {
-  try {
-    const token = req.cookies.token
+router.get('/me', protect, async (req, res) => {
+  const user = req.user
 
-    if (!token) {
-      return res
-        .status(401)
-        .json({
-          message:
-            'Not authenticated',
-        })
-    }
+  const today = new Date()
+  const isNewDay =
+    !user.lastAnalysisDate ||
+    user.lastAnalysisDate.toDateString() !== today.toDateString()
 
-    const decoded = jwt.verify(
-      token,
-      process.env.JWT_SECRET
-    )
-
-    const user =
-      await User.findById(decoded.id)
-
-    if (!user) {
-      return res
-        .status(404)
-        .json({
-          message:
-            'User not found',
-        })
-    }
-
-    res.json({
-      id: user._id,
-
-      name: user.name,
-
-      email: user.email,
-
-      avatar: user.avatar,
-
-      provider: user.provider,
-    })
-  } catch (err) {
-    res.status(401).json({
-      message: 'Invalid token',
-    })
+  if (isNewDay) {
+    user.dailyAnalysisCount = 0
+    user.lastAnalysisDate   = today
+    await user.save()
   }
+
+  res.json({
+    _id:                user._id,
+    name:               user.name,
+    email:              user.email,
+    avatar:             user.avatar,
+    plan:               user.plan,
+    dailyAnalysisCount: user.dailyAnalysisCount,
+    lastAnalysisDate:   user.lastAnalysisDate,
+  })
 })
 
-router.post('/logout', (req, res) => {
+router.post('/logout', protect, (req, res) => {
   res.clearCookie('token')
-
-req.logout?.(() => {})
-
-res.json({
-  message: 'Logged out',
-})
+  res.json({ message: 'Logged out' })
 })
 
 export default router

@@ -11,7 +11,7 @@ import ScoreCard from '../components/ScoreCard'
 import ShareButton from '../components/ShareButton'
 import Navbar
 from '../components/Navbar'
-
+import ProFeatures from '../components/ProFeatures'
 import './Report.css'
 
 export default function Report() {
@@ -37,7 +37,7 @@ export default function Report() {
     const poll = async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:5000/api/reports/${id}`
+          `http://localhost:5000/api/report/${id}`
         )
 
         setReport(data)
@@ -236,6 +236,11 @@ export default function Report() {
           <FileTree tree={report.fileTree} />
         </section>
 
+        <section className="report__section report__section--full">
+          <h2 className="report__section-title">Pro features</h2>
+          <ProFeatures reportId={id} />
+        </section>
+
         <section className="report__section techstack">
           <h2 className="report__section-title">
             Repo score
@@ -245,6 +250,7 @@ export default function Report() {
             scoring={report.scoring}
           />
         </section>
+  
       </div>
     </div>
   )

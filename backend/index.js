@@ -4,7 +4,8 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import analyzeRouter from './routes/analyze.js'
 import cookieParser from 'cookie-parser'
-
+import paymentRoutes from './routes/paymentRoutes.js'
+import proFeaturesRoutes from './routes/proFeaturesRoutes.js' 
 import session from 'express-session'
 
 import passport from './config/passport.js'
@@ -57,6 +58,8 @@ app.use(
   '/api/reports',
   reportHistoryRoutes
 )
+app.use('/api/payment', paymentRoutes)
+app.use('/api/pro', proFeaturesRoutes)
 
 app.get('/health', (req, res) => res.json({ status: 'ok' }))
 
